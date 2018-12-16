@@ -20,7 +20,8 @@ def update(duration, remaining, file, width=100, overwrite=True):
     progress = '[' + '=' * pro_com + '-' * pro_rem + ']'
     end = '\r' if overwrite else '\n'
     
-    print('{} {} ({}%) '.format(tds, progress, perc), file=file, flush=True, end='\r')
+    print_kwargs = {'file': file, 'flush': True, 'end': end}
+    print('{} {} ({}%)'.format(tds, progress, perc), **print_kwargs)
 
 def countdown(seconds, file):
     duration = datetime.timedelta(seconds=seconds)
