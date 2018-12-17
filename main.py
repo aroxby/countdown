@@ -19,14 +19,14 @@ def update(duration, remaining, file, width=100, overwrite=True, headstart=0):
     out_of = 1 - headstart
     frac *= out_of
     frac += headstart
-    perc = int(100 * frac)
+    perc = 100 * frac
     pro_com = int(frac * width)
     pro_rem = width - pro_com
 
     progress = '[' + '=' * pro_com + '-' * pro_rem + ']'
     end = '\r' if overwrite else '\n'
     print_kwargs = {'file': file, 'flush': True, 'end': end}
-    print('{} {} ({}%)'.format(tds, progress, perc), **print_kwargs)
+    print('{} {} ({:.2f}%)'.format(tds, progress, perc), **print_kwargs)
 
 def countdown(seconds, start, file):
     duration = datetime.timedelta(seconds=seconds)
